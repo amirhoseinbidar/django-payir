@@ -17,10 +17,9 @@ PAY_REDIRECT_USER_URL = 'https://pay.ir/pg/'
 PAY_VARIFY_URL = 'https://pay.ir/pg/verify'
 OK_STATUS = ('1' , 'OK',)
 ERROR_STATUS = '0'
-METHOD_FIELD_PREFIX =  "methodfield||__"
+
 
 # ------------------------------------------------------------------
-
 
 def _pay(var, default):
     """
@@ -44,7 +43,9 @@ PAY_API_KEY = _pay('API_KEY', 'test')
 PAY_CALLBACK_URL = _pay('CALLBACK_URL', PAY_USED_DOMAIN+'pay/callback/')
 PAY_FORM_PROCESSOR = _pay('FORM_PROCESSOR','/pay/form/processor/' )
 PAY_SIGNAL_METHODS = _pay('SIGNAL_METHODS' , {})
+
 # EXTRA --------------------------------------------------------------
 
+METHOD_FIELD_PREFIX =  "methodfield||__"
 # simple cacheClass for cache data that need for callback 
 cache = TTLCache(2**20,1800) #1800s = 30min
