@@ -23,6 +23,7 @@ class PayForm(forms.Form):
     # this use for form action
     pay_form_processor = PAY_FORM_PROCESSOR
     
+    form_name = forms.CharField(widget=forms.HiddenInput, required=False)
     # extadData won't send to pay.ir api 
     # it is just for programmer pass another data he/she want  
     extraData = forms.CharField(widget=forms.HiddenInput, required=False)  
@@ -37,7 +38,7 @@ class PayForm(forms.Form):
     cancel_url = forms.CharField(widget=forms.HiddenInput)
 
     methodable_fileds = ['extraData','amount', 'factorNumber','mobile',
-                         'description', 'return_url', 'cancel_url' , '' ]
+                         'description', 'return_url', 'cancel_url' ]
     after_callback_handel = [
         'return_url', 'cancel_url'
     ] 

@@ -41,7 +41,7 @@ def get_signal_from_value(value , kwargs):
     else:
         return method(**kwargs)  
 
-def data_adapter(request, user, form_name, data: dict):
+def data_adapter(request, form_name, data: dict):
     for key, value in data.items():
         if key in PayForm.after_callback_handel:
             data[key] = value
@@ -49,7 +49,7 @@ def data_adapter(request, user, form_name, data: dict):
         # if field is for a field method fireup a signal
         if value.startswith(settings.METHOD_FIELD_PREFIX):
             data[key] = get_signal_from_value(value , 
-                            kwargs ={'request': request, 'user': user, 'form_name': form_name}  )            
+                            kwargs ={'request': request, 'form_name': form_name}  )            
     
     return data
 
@@ -87,7 +87,6 @@ class FormProcessorView(generic.View):
     def get_form_data(self):
         data = data_adapter(
             request=self.request,
-            user=self.request.user,
             form_name=self.request.POST.get('form_name', None),
             data=self.request.POST.copy()
         )
