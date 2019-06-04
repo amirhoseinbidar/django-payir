@@ -113,10 +113,10 @@
           return redirect('/success/')
   ```
 # نکته 
-  در صورتی که
-  ```MethodField```
-  برای 
-  ```cancel_url , return_url```
+  در صورتی که  
+  MethodField  
+  برای   
+  cancel_url , return_url  
   تعریف کنید این ۲ متد بعد از فرستاده شدن به درگاه پرداخت فراخوانی میشوند و مقادیر فرستاده شده نیز متفاوت است
   
 # سخن آخر  
